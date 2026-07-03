@@ -244,98 +244,139 @@
                 </div>
             </div>
 
-            <!-- TAB 2: PROFIL & LOGO -->
-            <div id="tab-utama" class="tab-content block">
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-                    <!-- Text Cover Info -->
-                    <div class="lg:col-span-7 flex flex-col justify-center space-y-6">
-                        <div class="border-b-2 border-dashed border-cowboy-brown/40 pb-4">
-                            <span class="inline-flex items-center gap-2 text-cowboy-red font-western text-sm md:text-base tracking-widest uppercase">
-                                <i class="fa-solid fa-shield-halved"></i> MAJLIS PENUTUPAN & MERARAU
-                            </span>
-                            <h2 class="font-western text-4xl md:text-5xl lg:text-6xl text-cowboy-dark mt-2 leading-tight drop-shadow-sm">
-                                KARNIVAL PSKPP
+           <!-- TAB 2: PROFIL & LOGO -->
+            <div id="tab-profil" class="tab-content hidden">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- Left: Objectives and Goals -->
+                    <div class="space-y-6">
+                        <div class="border-b-2 border-cowboy-brown pb-2">
+                            <h2 class="font-western text-3xl text-cowboy-dark flex items-center gap-2">
+                                <i class="fa-solid fa-shield-halved text-cowboy-red"></i> OBJEKTIF & MATLAMAT
                             </h2>
-                            <h3 class="font-western text-2xl md:text-3xl text-cowboy-red">
-                                PERINGKAT DAERAH KANOWIT 2026
-                            </h3>
                         </div>
 
-                        <!-- Badge Icon Row -->
-                        <div class="flex flex-wrap gap-4 py-2">
-                            <div class="flex items-center gap-2 bg-cowboy-brown/10 px-3 py-1.5 rounded-full text-cowboy-brown font-semibold text-xs border border-cowboy-brown/30">
-                                <i class="fa-solid fa-calendar"></i> 4 JULAI 2026 (SABTU)
-                            </div>
-                            <div class="flex items-center gap-2 bg-cowboy-brown/10 px-3 py-1.5 rounded-full text-cowboy-brown font-semibold text-xs border border-cowboy-brown/30">
-                                <i class="fa-solid fa-clock"></i> 9.00 AM - 4.00 PM
-                            </div>
-                            <div class="flex items-center gap-2 bg-cowboy-brown/10 px-3 py-1.5 rounded-full text-cowboy-brown font-semibold text-xs border border-cowboy-brown/30">
-                                <i class="fa-solid fa-location-dot"></i> DEWAN HORNBILL 2, UTS SIBU
+                        <!-- Objectives Cards Grid -->
+                        <div class="space-y-4">
+                            <h3 class="font-western text-lg text-cowboy-red tracking-wide">Objektif Utama</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="bg-parchment-dark/50 p-4 rounded-lg border border-cowboy-brown/30 flex flex-col items-center text-center">
+                                    <div class="bg-cowboy-red text-white p-3 rounded-full mb-3 shadow-md">
+                                        <i class="fa-solid fa-handshake text-xl"></i>
+                                    </div>
+                                    <h4 class="font-western text-xs text-cowboy-dark mb-1">Silaturrahim</h4>
+                                    <p class="text-xs text-stone-700 leading-relaxed">Mewujudkan hubungan silaturrahim yang lebih akrab, harmoni dan utuh.</p>
+                                </div>
+
+                                <div class="bg-parchment-dark/50 p-4 rounded-lg border border-cowboy-brown/30 flex flex-col items-center text-center">
+                                    <div class="bg-cowboy-dark text-parchment p-3 rounded-full mb-3 shadow-md">
+                                        <i class="fa-solid fa-people-group text-xl text-cowboy-gold"></i>
+                                    </div>
+                                    <h4 class="font-western text-xs text-cowboy-dark mb-1">Setia Kawan</h4>
+                                    <p class="text-xs text-stone-700 leading-relaxed">Memupuk semangat kerjasama dan setia kawan antara guru dan staf sokongan.</p>
+                                </div>
+
+                                <div class="bg-parchment-dark/50 p-4 rounded-lg border border-cowboy-brown/30 flex flex-col items-center text-center">
+                                    <div class="bg-cowboy-green text-white p-3 rounded-full mb-3 shadow-md">
+                                        <i class="fa-solid fa-circle-nodes text-xl"></i>
+                                    </div>
+                                    <h4 class="font-western text-xs text-cowboy-dark mb-1">Persaingan Sihat</h4>
+                                    <p class="text-xs text-stone-700 leading-relaxed">Menyemarakkan lagi persaingan yang sihat serta berintegriti tinggi.</p>
+                                </div>
                             </div>
                         </div>
 
-                        <!-- Slogan Message -->
-                        <div class="bg-gradient-to-r from-cowboy-brown to-cowboy-dark text-parchment p-5 rounded-lg border-2 border-cowboy-gold shadow-lg flex items-start gap-4">
-                            <i class="fa-solid fa-quote-left text-3xl text-cowboy-gold"></i>
-                            <div>
-                                <p class="font-western text-lg tracking-wider text-cowboy-gold">TOGETHER WE RIDE, TOGETHER WE SHINE!</p>
-                                <p class="text-xs text-parchment/80 mt-1 leading-relaxed">
-                                    Merapatkan ukhuwah, menyalakan semangat perjuangan sukan yang harmoni, dan memajukan maruah warga pendidik Daerah Kanowit ke mercu kegemilangan.
-                                </p>
-                            </div>
-                        </div>
-
-                        <!-- Live Countdown Widget -->
-                        <div class="bg-parchment-dark/60 p-4 rounded-lg border border-cowboy-brown/40">
-                            <h4 class="font-western text-xs uppercase tracking-wider text-cowboy-brown mb-2 flex items-center gap-2">
-                                <i class="fa-solid fa-hourglass-start animate-spin"></i> Pembukaan Majlis Penutupan:
-                            </h4>
-                            <div id="countdown" class="grid grid-cols-4 gap-2 text-center">
-                                <div class="bg-cowboy-dark text-parchment rounded p-2">
-                                    <span id="days" class="font-western text-xl md:text-2xl text-cowboy-gold">00</span>
-                                    <p class="text-[10px] uppercase">Hari</p>
+                        <div class="space-y-4 pt-2">
+                            <h3 class="font-western text-lg text-cowboy-red tracking-wide">Matlamat Karnival</h3>
+                            <div class="space-y-3">
+                                <div class="flex items-start gap-3 bg-parchment-dark/30 p-3 rounded-lg border-l-4 border-cowboy-gold">
+                                    <span class="font-western text-cowboy-dark bg-cowboy-gold/30 w-6 h-6 rounded-full flex items-center justify-center shrink-0 text-sm">1</span>
+                                    <div>
+                                        <strong class="text-stone-900 font-bold block">Muhibah</strong>
+                                        <span class="text-xs text-stone-700">Memupuk semangat muhibah yang tulen merentas budaya dalam kalangan seluruh warga pendidik.</span>
+                                    </div>
                                 </div>
-                                <div class="bg-cowboy-dark text-parchment rounded p-2">
-                                    <span id="hours" class="font-western text-xl md:text-2xl text-cowboy-gold">00</span>
-                                    <p class="text-[10px] uppercase">Jam</p>
+                                <div class="flex items-start gap-3 bg-parchment-dark/30 p-3 rounded-lg border-l-4 border-cowboy-red">
+                                    <span class="font-western text-white bg-cowboy-red w-6 h-6 rounded-full flex items-center justify-center shrink-0 text-sm">2</span>
+                                    <div>
+                                        <strong class="text-stone-900 font-bold block">Platform Bersama</strong>
+                                        <span class="text-xs text-stone-700">Menyediakan ruang integrasi bagi penglibatan aktif dalam aktiviti sukan, kesihatan diri & mental.</span>
+                                    </div>
                                 </div>
-                                <div class="bg-cowboy-dark text-parchment rounded p-2">
-                                    <span id="minutes" class="font-western text-xl md:text-2xl text-cowboy-gold">00</span>
-                                    <p class="text-[10px] uppercase">Minit</p>
-                                </div>
-                                <div class="bg-cowboy-dark text-parchment rounded p-2">
-                                    <span id="seconds" class="font-western text-xl md:text-2xl text-cowboy-gold">00</span>
-                                    <p class="text-[10px] uppercase">Saat</p>
+                                <div class="flex items-start gap-3 bg-parchment-dark/30 p-3 rounded-lg border-l-4 border-cowboy-brown">
+                                    <span class="font-western text-parchment bg-cowboy-brown w-6 h-6 rounded-full flex items-center justify-center shrink-0 text-sm">3</span>
+                                    <div>
+                                        <strong class="text-stone-900 font-bold block">Insan Cergas</strong>
+                                        <span class="text-xs text-stone-700">Melahirkan barisan pendidik berfikiran cergas serta fizikal cerdas demi kelestarian pendidikan negara.</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Visual Wanted Frame / Cowboy Poster Graphic -->
-                    <div class="lg:col-span-5 flex justify-center">
-                        <div class="relative bg-parchment-dark border-8 border-cowboy-brown p-6 rounded shadow-2xl max-w-sm w-full text-center relative overflow-hidden">
-                            <!-- Wanted Poster style -->
-                            <div class="absolute -top-12 -right-12 bg-cowboy-red text-white font-western text-[10px] uppercase py-1 px-10 rotate-45 border-b border-cowboy-gold z-10">
-                                2026
-                            </div>
-                            <h3 class="font-western text-3xl text-cowboy-brown tracking-widest uppercase">WANTED!</h3>
-                            <p class="font-serif italic text-sm text-stone-700">All Educators of Kanowit</p>
-                            
-                            <!-- Central Icon Canvas Frame -->
-                            <div class="my-4 border-2 border-stone-800 p-2 bg-parchment flex flex-col justify-center items-center h-52 relative">
-                                <i class="fa-solid fa-horse-head text-7xl text-cowboy-brown mb-2 opacity-80"></i>
-                                <div class="text-xs uppercase font-western tracking-widest text-cowboy-red">KANOWIT SHERIFFS</div>
-                                <div class="absolute bottom-2 text-center w-full px-4">
-                                    <p class="text-[10px] font-sans text-stone-600 font-bold">KEMENTERIAN PENDIDIKAN MALAYSIA</p>
+                    <!-- Right: Logo & breakdown -->
+                    <div class="space-y-6">
+                        <div class="border-b-2 border-cowboy-brown pb-2">
+                            <h2 class="font-western text-3xl text-cowboy-dark flex items-center gap-2">
+                                <i class="fa-solid fa-palette text-cowboy-red"></i> LOGO RASMI PSKPP KANOWIT
+                            </h2>
+                        </div>
+
+                        <div class="bg-parchment-dark p-6 rounded-lg border border-cowboy-brown/30 space-y-4">
+                            <!-- Visual Logo Simulation (Hornbill Wings in Geometric style) -->
+                            <div class="flex flex-col items-center py-4 bg-white/70 rounded border border-cowboy-gold/30">
+                                <div class="relative w-40 h-32 flex items-center justify-center">
+                                    <!-- Beautiful customized SVG represent Sayap Kenyalang (Hornbill wing in geometric style) -->
+                                    <svg viewBox="0 0 100 80" class="w-full h-full drop-shadow-md">
+                                        <!-- Rainbow and river waves resembling 2 and 6 -->
+                                        <path d="M10,60 Q30,10 50,45 T90,30" fill="none" stroke="#D4AF37" stroke-width="4" stroke-linecap="round"/>
+                                        <path d="M15,65 Q35,15 55,50 T95,35" fill="none" stroke="#8B0000" stroke-width="3" stroke-linecap="round"/>
+                                        <!-- Geometric Hornbill Wing Wing shapes -->
+                                        <polygon points="50,15 30,35 45,40" fill="#1A365D" opacity="0.9" />
+                                        <polygon points="50,15 65,30 55,40" fill="#1C3F24" opacity="0.8" />
+                                        <polygon points="30,35 15,45 35,45" fill="#8B0000" opacity="0.9" />
+                                        <polygon points="65,30 80,40 60,42" fill="#D4AF37" opacity="0.9" />
+                                        <!-- Kenyalang head peak representation -->
+                                        <path d="M50,15 L52,5 L48,5 Z" fill="#D4AF37" />
+                                    </svg>
+                                    <div class="absolute inset-0 flex items-end justify-center pb-2">
+                                        <span class="font-western text-sm text-cowboy-dark">KANOWIT 2026</span>
+                                    </div>
                                 </div>
+                                <span class="text-xs font-bold text-cowboy-red uppercase tracking-wider mt-2">"Identiti Rasmi: Sayap Kenyalang Kanowit"</span>
                             </div>
 
-                            <div class="font-western text-xl text-stone-800 mt-2">REWARD:</div>
-                            <p class="text-xs text-stone-700 italic">"Pure Sportsmanship, Camaraderie & Memorable Western Merarau Feast!"</p>
+                            <!-- Explanatory Breakdown Table -->
+                            <div class="space-y-3 text-xs leading-relaxed text-stone-700">
+                                <div>
+                                    <h4 class="font-western text-stone-900 border-b border-stone-300 pb-1 flex items-center gap-1.5 text-xs">
+                                        <i class="fa-solid fa-feather text-cowboy-gold"></i> BURUNG KENYALANG
+                                    </h4>
+                                    <p class="mt-1 pl-4 text-[11px]">Lambang kebanggaan Sarawak (Bumi Kenyalang) dan identiti mutlak lokasi penganjuran sukan iaitu Daerah Kanowit.</p>
+                                </div>
+                                <div>
+                                    <h4 class="font-western text-stone-900 border-b border-stone-300 pb-1 flex items-center gap-1.5 text-xs">
+                                        <i class="fa-solid fa-plane-up text-cowboy-gold"></i> POSISI 'TERBANG'
+                                    </h4>
+                                    <p class="mt-1 pl-4 text-[11px]">Menggambarkan aspirasi tinggi dan kemajuan cemerlang para pendidik dalam mencapai kejayaan sukan, integriti & kebudayaan.</p>
+                                </div>
+                                <div>
+                                    <h4 class="font-western text-stone-900 border-b border-stone-300 pb-1 flex items-center gap-1.5 text-xs">
+                                        <i class="fa-solid fa-cubes text-cowboy-gold"></i> REKA BENTUK GEOMETRIK
+                                    </h4>
+                                    <p class="mt-1 pl-4 text-[11px]">Melambangkan pemodenan, inovasi digital dan penyatuan harmoni pelbagai elemen zon penganjur menjadi satu entiti yang gagah berwibawa.</p>
+                                </div>
+                                <div>
+                                    <h4 class="font-western text-stone-900 border-b border-stone-300 pb-1 flex items-center gap-1.5 text-xs">
+                                        <i class="fa-solid fa-water text-cowboy-gold"></i> ALUNAN NOMBOR & WARNA-WARNI
+                                    </h4>
+                                    <p class="mt-1 pl-4 text-[11px]">Merah, biru, hijau, kuning, jingga & hitam mewakili 4 zon yang bertanding. Lengkungan berpusat '2' dan '6' (2026) pula menyerupai alunan Sungai Rajang & Sungai Kanowit.</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+
 
             <!-- TAB 3: ZON PSKP -->
            <!-- TAB 3: ZON PSKP -->
@@ -532,7 +573,7 @@
                     <!-- Sports Category Grid -->
                     <div class="bg-parchment-dark/50 p-4 rounded-lg border border-cowboy-brown/30">
                         <h3 class="font-western text-sm text-cowboy-brown mb-3 tracking-widest uppercase">
-                            10 Acara Utama Dipertandingkan
+                            15 Acara Utama Dipertandingkan
                         </h3>
                         <div class="grid grid-cols-2 sm:grid-cols-5 gap-3">
                             <div class="bg-white p-3 rounded shadow-sm border border-stone-200 flex flex-col items-center text-center">
@@ -769,7 +810,7 @@
 
             <!-- TAB 6: KEDUDUKAN MEJA -->
             <div id="tab-meja" class="tab-content hidden">
-                <p class="text-stone-700">Kedudukan Meja content akan ditambah di sini.</p>
+                <img src="set_ar.png">
             </div>
 
             <!-- TAB 7: JAWATANKUASA -->
