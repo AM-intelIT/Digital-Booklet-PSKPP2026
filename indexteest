@@ -1,0 +1,1228 @@
+<!DOCTYPE html>
+<html lang="ms" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karnival PSKPP Kanowit 2026 - Western Edition</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for Western Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Rye (Western), Rye, Playfair Display & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rye&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        western: ['Rye', 'serif'],
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        parchment: {
+                            light: '#FDF6E2',
+                            DEFAULT: '#F5E6C4',
+                            dark: '#E6D0A7',
+                        },
+                        cowboy: {
+                            red: '#8B0000',
+                            gold: '#D4AF37',
+                            brown: '#4A2F13',
+                            dark: '#2B1A08',
+                            blue: '#1A365D',
+                            green: '#1C3F24',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom scrollbar styled like wood/leather */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #2B1A08;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #D4AF37;
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #F5E6C4;
+        }
+        
+        /* Custom CSS Wood Texture Background Effect */
+        .wood-bg {
+            background-color: #2b1a08;
+            background-image: radial-gradient(rgba(255,255,255,0.05) 1px, transparent 0),
+                              radial-gradient(rgba(255,255,255,0.05) 1px, transparent 0);
+            background-size: 8px 8px;
+        }
+
+        /* Paper fold effect for western feel */
+        .parchment-container {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 0 40px rgba(74, 47, 19, 0.3);
+            border: 12px double #4A2F13;
+        }
+
+        /* Stamp animation */
+        @keyframes stamp {
+            0% { transform: scale(3); opacity: 0; }
+            80% { transform: scale(0.9); opacity: 0.9; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .stamp-effect {
+            animation: stamp 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+    </style>
+</head>
+<body class="wood-bg text-stone-900 font-sans min-h-screen flex flex-col justify-between">
+
+    <!-- Top Decorative Western Bar -->
+    <header class="w-full bg-gradient-to-r from-cowboy-dark via-cowboy-brown to-cowboy-dark border-b-4 border-cowboy-gold py-4 px-6 shadow-2xl relative z-10">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+            <!-- Left Side Logo Theme -->
+            <div class="flex items-center gap-3">
+                <img src="logopskpp26.png" width="60" height="60"> <img src="3.png" width="60" height="60">
+                <div>
+                    <h1 class="font-western text-xl md:text-2xl text-cowboy-gold tracking-wide drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]">
+                        PSKPP KANOWIT 2026
+                    </h1>
+                    <p class="text-xs text-parchment font-semibold tracking-widest uppercase">Karnival PSKPP Peringkat Daerah Kanowit 2026</p>
+                </div>
+            </div>
+
+            <!-- Title Banner -->
+            <div class="text-center md:text-right">
+                <span class="inline-block bg-cowboy-red border border-cowboy-gold text-white font-western text-xs px-3 py-1 rounded shadow-md tracking-widest uppercase mb-1">
+                    TEMA: WESTERN
+                </span>
+                <p class="text-sm text-parchment italic font-serif">""</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Desktop & Mobile Main Menu (Tabs styled as Western Saddle Bags / Badges) -->
+    <nav class="bg-cowboy-dark border-b border-cowboy-gold/40 py-2.5 px-2 overflow-x-auto whitespace-nowrap scrollbar-none relative z-10">
+        <div class="max-w-7xl mx-auto flex justify-start lg:justify-center items-center gap-2 px-4">
+            <!-- Tab Button 1: Utama -->
+            <button onclick="switchTab('utama')" id="btn-utama" class="tab-btn px-4 py-2 rounded-lg font-western text-sm transition-all flex items-center gap-2 border bg-cowboy-gold text-cowboy-dark hover:shadow-lg">
+                <i class="fa-solid fa-hat-cowboy"></i> Utama
+            </button>
+            
+            <!-- Tab Button 2: Profil & Matlamat -->
+            <button onclick="switchTab('profil')" id="btn-profil" class="tab-btn px-4 py-2 rounded-lg font-western text-sm transition-all flex items-center gap-2 border text-parchment-dark border-cowboy-brown hover:bg-parchment-dark">
+                <i class="fa-solid fa-bullseye"></i> Objektif & Logo
+            </button>
+            
+            <!-- Tab Button 3: Zon PSKP -->
+            <button onclick="switchTab('zon')" id="btn-zon" class="tab-btn px-4 py-2 rounded-lg font-western text-sm transition-all flex items-center gap-2 border text-parchment-dark border-cowboy-brown hover:bg-parchment-dark">
+                <i class="fa-solid fa-map"></i> Zon PSKP
+            </button>
+
+            <!-- Tab Button 4: Sukan & Masa -->
+            <button onclick="switchTab('sukan')" id="btn-sukan" class="tab-btn px-4 py-2 rounded-lg font-western text-sm transition-all flex items-center gap-2 border text-parchment-dark border-cowboy-brown hover:bg-parchment-dark">
+                <i class="fa-solid fa-trophy"></i> Garis Masa Pertandingan
+            </button>
+
+            <!-- Tab Button 5: Atur Cara -->
+            <button onclick="switchTab('aturcara')" id="btn-aturcara" class="tab-btn px-4 py-2 rounded-lg font-western text-sm transition-all flex items-center gap-2 border text-parchment-dark border-cowboy-brown hover:bg-parchment-dark">
+                <i class="fa-solid fa-clock"></i> Atur Cara Penutupan
+            </button>
+
+            <!-- Tab Button 6: Kedudukan Meja -->
+            <button onclick="switchTab('meja')" id="btn-meja" class="tab-btn px-4 py-2 rounded-lg font-western text-sm transition-all flex items-center gap-2 border text-parchment-dark border-cowboy-brown hover:bg-parchment-dark">
+                <i class="fa-solid fa-chair"></i> Kedudukan Meja
+            </button>
+
+            <!-- Tab Button 7: Jawatankuasa -->
+            <button onclick="switchTab('ajk')" id="btn-ajk" class="tab-btn px-4 py-2 rounded-lg font-western text-sm transition-all flex items-center gap-2 border text-parchment-dark border-cowboy-brown hover:bg-parchment-dark">
+                <i class="fa-solid fa-users-gear"></i> Senarai AJK
+            </button>
+
+            <!-- Tab Button 8: Penghargaan -->
+            <button onclick="switchTab('penghargaan')" id="btn-penghargaan" class="tab-btn px-4 py-2 rounded-lg font-western text-sm transition-all flex items-center gap-2 border text-parchment-dark border-cowboy-brown hover:bg-parchment-dark">
+                <i class="fa-solid fa-scroll"></i> Penghargaan
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content Container (Parchment Booklet Style) -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 py-8 relative">
+        <div class="parchment-container bg-parchment rounded-xl p-6 md:p-10 relative overflow-hidden min-h-[650px] flex flex-col justify-between">
+            <!-- Decorative Border corners -->
+            <div class="absolute top-4 left-4 text-cowboy-brown opacity-20"><i class="fa-solid fa-cowbell text-4xl"></i></div>
+            <div class="absolute top-4 right-4 text-cowboy-brown opacity-20"><i class="fa-solid fa-horse text-4xl"></i></div>
+            <div class="absolute bottom-4 left-4 text-cowboy-brown opacity-20"><i class="fa-solid fa-bullhorn text-4xl"></i></div>
+            <div class="absolute bottom-4 right-4 text-cowboy-brown opacity-20"><i class="fa-solid fa-cactus text-4xl"></i></div>
+
+            <!-- TAB 1: UTAMA (COVER PAGE) -->
+            <div id="tab-utama" class="tab-content block">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    <!-- Text Cover Info -->
+                    <div class="lg:col-span-7 flex flex-col justify-center space-y-6">
+                        <div class="border-b-2 border-dashed border-cowboy-brown/40 pb-4">
+                            <span class="inline-flex items-center gap-2 text-cowboy-red font-western text-sm md:text-base tracking-widest uppercase">
+                                <i class="fa-solid fa-shield-halved"></i> MAJLIS PENUTUPAN & MERARAU
+                            </span>
+                            <h2 class="font-western text-4xl md:text-5xl lg:text-6xl text-cowboy-dark mt-2 leading-tight drop-shadow-sm">
+                                KARNIVAL PSKPP
+                            </h2>
+                            <h3 class="font-western text-2xl md:text-3xl text-cowboy-red">
+                                PERINGKAT DAERAH KANOWIT 2026
+                            </h3>
+                        </div>
+
+                        <!-- Badge Icon Row -->
+                        <div class="flex flex-wrap gap-4 py-2">
+                            <div class="flex items-center gap-2 bg-cowboy-brown/10 px-3 py-1.5 rounded-full text-cowboy-brown font-semibold text-xs border border-cowboy-brown/30">
+                                <i class="fa-solid fa-calendar"></i> 4 JULAI 2026 (SABTU)
+                            </div>
+                            <div class="flex items-center gap-2 bg-cowboy-brown/10 px-3 py-1.5 rounded-full text-cowboy-brown font-semibold text-xs border border-cowboy-brown/30">
+                                <i class="fa-solid fa-clock"></i> 9.00 AM - 4.00 PM
+                            </div>
+                            <div class="flex items-center gap-2 bg-cowboy-brown/10 px-3 py-1.5 rounded-full text-cowboy-brown font-semibold text-xs border border-cowboy-brown/30">
+                                <i class="fa-solid fa-location-dot"></i> DEWAN HORNBILL 2, UTS SIBU
+                            </div>
+                        </div>
+
+                        <!-- Slogan Message -->
+                        <div class="bg-gradient-to-r from-cowboy-brown to-cowboy-dark text-parchment p-5 rounded-lg border-2 border-cowboy-gold shadow-lg flex items-start gap-4">
+                            <i class="fa-solid fa-quote-left text-3xl text-cowboy-gold"></i>
+                            <div>
+                                <p class="font-western text-lg tracking-wider text-cowboy-gold">TOGETHER WE RIDE, TOGETHER WE SHINE!</p>
+                                <p class="text-xs text-parchment/80 mt-1 leading-relaxed">
+                                    Merapatkan ukhuwah, menyalakan semangat perjuangan sukan yang harmoni, dan memajukan maruah warga pendidik Daerah Kanowit ke mercu kegemilangan.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Live Countdown Widget -->
+                        <div class="bg-parchment-dark/60 p-4 rounded-lg border border-cowboy-brown/40">
+                            <h4 class="font-western text-xs uppercase tracking-wider text-cowboy-brown mb-2 flex items-center gap-2">
+                                <i class="fa-solid fa-hourglass-start animate-spin"></i> Pembukaan Majlis Penutupan:
+                            </h4>
+                            <div id="countdown" class="grid grid-cols-4 gap-2 text-center">
+                                <div class="bg-cowboy-dark text-parchment rounded p-2">
+                                    <span id="days" class="font-western text-xl md:text-2xl text-cowboy-gold">00</span>
+                                    <p class="text-[10px] uppercase">Hari</p>
+                                </div>
+                                <div class="bg-cowboy-dark text-parchment rounded p-2">
+                                    <span id="hours" class="font-western text-xl md:text-2xl text-cowboy-gold">00</span>
+                                    <p class="text-[10px] uppercase">Jam</p>
+                                </div>
+                                <div class="bg-cowboy-dark text-parchment rounded p-2">
+                                    <span id="minutes" class="font-western text-xl md:text-2xl text-cowboy-gold">00</span>
+                                    <p class="text-[10px] uppercase">Minit</p>
+                                </div>
+                                <div class="bg-cowboy-dark text-parchment rounded p-2">
+                                    <span id="seconds" class="font-western text-xl md:text-2xl text-cowboy-gold">00</span>
+                                    <p class="text-[10px] uppercase">Saat</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Visual Wanted Frame / Cowboy Poster Graphic -->
+                    <div class="lg:col-span-5 flex justify-center">
+                        <div class="relative bg-parchment-dark border-8 border-cowboy-brown p-6 rounded shadow-2xl max-w-sm w-full text-center overflow-hidden">
+                            <!-- Wanted Poster style -->
+                            <div class="absolute -top-12 -right-12 bg-cowboy-red text-white font-western text-[10px] uppercase py-1 px-10 rotate-45 border-b border-cowboy-gold z-10">
+                                2026
+                            </div>
+                            <img src="poster pskpp.png" alt="PSKPP Poster 2026" class="w-full" width="400" height="420">
+                            <p style="color:blue;"><a href="https://drive.google.com/file/d/14Y7C5YOKJg62pxqO4VUDef_LwrQChf6K/view?usp=sharing">LINK Full Booklet (BUKU PROGRAM MAJLIS PENUTUPAN PSKPP 2026)</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+           <!-- TAB 2: PROFIL & LOGO -->
+            <div id="tab-profil" class="tab-content hidden">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- Left: Objectives and Goals -->
+                    <div class="space-y-6">
+                        <div class="border-b-2 border-cowboy-brown pb-2">
+                            <h2 class="font-western text-3xl text-cowboy-dark flex items-center gap-2">
+                                <i class="fa-solid fa-shield-halved text-cowboy-red"></i> OBJEKTIF & MATLAMAT
+                            </h2>
+                        </div>
+
+                        <!-- Objectives Cards Grid -->
+                        <div class="space-y-4">
+                            <h3 class="font-western text-lg text-cowboy-red tracking-wide">Objektif Utama</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="bg-parchment-dark/50 p-4 rounded-lg border border-cowboy-brown/30 flex flex-col items-center text-center">
+                                    <div class="bg-cowboy-red text-white p-3 rounded-full mb-3 shadow-md">
+                                        <i class="fa-solid fa-handshake text-xl"></i>
+                                    </div>
+                                    <h4 class="font-western text-xs text-cowboy-dark mb-1">Silaturrahim</h4>
+                                    <p class="text-xs text-stone-700 leading-relaxed">Mewujudkan hubungan silaturrahim yang lebih akrab, harmoni dan utuh.</p>
+                                </div>
+
+                                <div class="bg-parchment-dark/50 p-4 rounded-lg border border-cowboy-brown/30 flex flex-col items-center text-center">
+                                    <div class="bg-cowboy-dark text-parchment p-3 rounded-full mb-3 shadow-md">
+                                        <i class="fa-solid fa-people-group text-xl text-cowboy-gold"></i>
+                                    </div>
+                                    <h4 class="font-western text-xs text-cowboy-dark mb-1">Setia Kawan</h4>
+                                    <p class="text-xs text-stone-700 leading-relaxed">Memupuk semangat kerjasama dan setia kawan antara guru dan staf sokongan.</p>
+                                </div>
+
+                                <div class="bg-parchment-dark/50 p-4 rounded-lg border border-cowboy-brown/30 flex flex-col items-center text-center">
+                                    <div class="bg-cowboy-green text-white p-3 rounded-full mb-3 shadow-md">
+                                        <i class="fa-solid fa-circle-nodes text-xl"></i>
+                                    </div>
+                                    <h4 class="font-western text-xs text-cowboy-dark mb-1">Persaingan Sihat</h4>
+                                    <p class="text-xs text-stone-700 leading-relaxed">Menyemarakkan lagi persaingan yang sihat serta berintegriti tinggi.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="space-y-4 pt-2">
+                            <h3 class="font-western text-lg text-cowboy-red tracking-wide">Matlamat Karnival</h3>
+                            <div class="space-y-3">
+                                <div class="flex items-start gap-3 bg-parchment-dark/30 p-3 rounded-lg border-l-4 border-cowboy-gold">
+                                    <span class="font-western text-cowboy-dark bg-cowboy-gold/30 w-6 h-6 rounded-full flex items-center justify-center shrink-0 text-sm">1</span>
+                                    <div>
+                                        <strong class="text-stone-900 font-bold block">Muhibah</strong>
+                                        <span class="text-xs text-stone-700">Memupuk semangat muhibah yang tulen merentas budaya dalam kalangan seluruh warga pendidik.</span>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3 bg-parchment-dark/30 p-3 rounded-lg border-l-4 border-cowboy-red">
+                                    <span class="font-western text-white bg-cowboy-red w-6 h-6 rounded-full flex items-center justify-center shrink-0 text-sm">2</span>
+                                    <div>
+                                        <strong class="text-stone-900 font-bold block">Platform Bersama</strong>
+                                        <span class="text-xs text-stone-700">Menyediakan ruang integrasi bagi penglibatan aktif dalam aktiviti sukan, kesihatan diri & mental.</span>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3 bg-parchment-dark/30 p-3 rounded-lg border-l-4 border-cowboy-brown">
+                                    <span class="font-western text-parchment bg-cowboy-brown w-6 h-6 rounded-full flex items-center justify-center shrink-0 text-sm">3</span>
+                                    <div>
+                                        <strong class="text-stone-900 font-bold block">Insan Cergas</strong>
+                                        <span class="text-xs text-stone-700">Melahirkan barisan pendidik berfikiran cergas serta fizikal cerdas demi kelestarian pendidikan negara.</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Logo & breakdown -->
+                    <div class="space-y-6">
+                        <div class="border-b-2 border-cowboy-brown pb-2">
+                            <h2 class="font-western text-3xl text-cowboy-dark flex items-center gap-2">
+                                <i class="fa-solid fa-palette text-cowboy-red"></i> LOGO RASMI PSKPP KANOWIT
+                            </h2>
+                        </div>
+
+                        <div class="bg-parchment-dark p-6 rounded-lg border border-cowboy-brown/30 space-y-4">
+                            <!-- Visual Logo Simulation (Hornbill Wings in Geometric style) -->
+                            <div class="flex flex-col items-center py-4 bg-white/70 rounded border border-cowboy-gold/30">
+                            <img src="2.png" width="400" height="420">
+                                <span class="text-xs font-bold text-cowboy-red uppercase tracking-wider mt-2">"Identiti Rasmi: Sayap Kenyalang Kanowit"</span>
+                            </div>
+
+                            <!-- Explanatory Breakdown Table -->
+                            <div class="space-y-3 text-xs leading-relaxed text-stone-700">
+                                <div>
+                                    <h4 class="font-western text-stone-900 border-b border-stone-300 pb-1 flex items-center gap-1.5 text-xs">
+                                        <i class="fa-solid fa-feather text-cowboy-gold"></i> BURUNG KENYALANG
+                                    </h4>
+                                    <p class="mt-1 pl-4 text-[11px]">Lambang kebanggaan Sarawak (Bumi Kenyalang) dan identiti mutlak lokasi penganjuran sukan iaitu Daerah Kanowit.</p>
+                                </div>
+                                <div>
+                                    <h4 class="font-western text-stone-900 border-b border-stone-300 pb-1 flex items-center gap-1.5 text-xs">
+                                        <i class="fa-solid fa-plane-up text-cowboy-gold"></i> POSISI 'TERBANG'
+                                    </h4>
+                                    <p class="mt-1 pl-4 text-[11px]">Menggambarkan aspirasi tinggi dan kemajuan cemerlang para pendidik dalam mencapai kejayaan sukan, integriti & kebudayaan.</p>
+                                </div>
+                                <div>
+                                    <h4 class="font-western text-stone-900 border-b border-stone-300 pb-1 flex items-center gap-1.5 text-xs">
+                                        <i class="fa-solid fa-cubes text-cowboy-gold"></i> REKA BENTUK GEOMETRIK
+                                    </h4>
+                                    <p class="mt-1 pl-4 text-[11px]">Melambangkan pemodenan, inovasi digital dan penyatuan harmoni pelbagai elemen zon penganjur menjadi satu entiti yang gagah berwibawa.</p>
+                                </div>
+                                <div>
+                                    <h4 class="font-western text-stone-900 border-b border-stone-300 pb-1 flex items-center gap-1.5 text-xs">
+                                        <i class="fa-solid fa-water text-cowboy-gold"></i> ALUNAN NOMBOR & WARNA-WARNI
+                                    </h4>
+                                    <p class="mt-1 pl-4 text-[11px]">Merah, biru, hijau, kuning, jingga & hitam mewakili 4 zon yang bertanding. Lengkungan berpusat '2' dan '6' (2026) pula menyerupai alunan Sungai Rajang & Sungai Kanowit.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- TAB 3: ZON PSKP -->
+           <!-- TAB 3: ZON PSKP -->
+            <div id="tab-zon" class="tab-content hidden">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                    <!-- Historical Placement Standings (Left 4 cols) -->
+                    <div class="lg:col-span-5 space-y-6">
+                        <div class="border-b-2 border-cowboy-brown pb-2">
+                            <h2 class="font-western text-2xl text-cowboy-dark flex items-center gap-2">
+                                <i class="fa-solid fa-timeline text-cowboy-red"></i> SEJARAH KEDUDUKAN ZON (2022-2025)
+                            </h2>
+                        </div>
+
+                        <!-- Cowboy Champion Board -->
+                        <div class="bg-cowboy-dark text-parchment p-5 rounded-lg border-2 border-cowboy-gold shadow-lg space-y-4">
+                            <h3 class="font-western text-sm text-cowboy-gold tracking-widest text-center border-b border-cowboy-gold/40 pb-2">
+                                CHRONICLES OF CHAMPIONS
+                            </h3>
+
+                            <!-- Year List -->
+                            <div class="space-y-3 text-xs">
+                                <!-- 2022 -->
+                                <div class="border-b border-cowboy-brown/50 pb-2">
+                                    <div class="flex justify-between font-western text-cowboy-gold mb-1 text-[11px]">
+                                        <span>2022</span>
+                                        <span class="text-white"><i class="fa-solid fa-crown text-yellow-400"></i> ZON KANOWIT</span>
+                                    </div>
+                                    <div class="grid grid-cols-3 gap-1 text-[10px] text-parchment/70">
+                                        <div>2nd: Zon Sedaya</div>
+                                        <div>3rd: Zon SFX</div>
+                                        <div>4th: Zon DAP</div>
+                                    </div>
+                                </div>
+                                <!-- 2023 -->
+                                <div class="border-b border-cowboy-brown/50 pb-2">
+                                    <div class="flex justify-between font-western text-cowboy-gold mb-1 text-[11px]">
+                                        <span>2023</span>
+                                        <span class="text-white"><i class="fa-solid fa-crown text-yellow-400"></i> ZON KANOWIT</span>
+                                    </div>
+                                    <div class="grid grid-cols-3 gap-1 text-[10px] text-parchment/70">
+                                        <div>2nd: Zon DAP</div>
+                                        <div>3rd: Zon SFX</div>
+                                        <div>4th: Zon Sedaya</div>
+                                    </div>
+                                </div>
+                                <!-- 2024 -->
+                                <div class="border-b border-cowboy-brown/50 pb-2">
+                                    <div class="flex justify-between font-western text-cowboy-gold mb-1 text-[11px]">
+                                        <span>2024</span>
+                                        <span class="text-white"><i class="fa-solid fa-crown text-yellow-400"></i> ZON SFX</span>
+                                    </div>
+                                    <div class="grid grid-cols-3 gap-1 text-[10px] text-parchment/70">
+                                        <div>2nd: Zon Sedaya</div>
+                                        <div>3rd: Zon DAP</div>
+                                        <div>4th: Zon Kanowit</div>
+                                    </div>
+                                </div>
+                                <!-- 2025 -->
+                                <div class="border-b border-cowboy-brown/50 pb-2">
+                                    <div class="flex justify-between font-western text-cowboy-gold mb-1 text-[11px]">
+                                        <span>2025</span>
+                                        <span class="text-white"><i class="fa-solid fa-crown text-yellow-400"></i> ZON KANOWIT</span>
+                                    </div>
+                                    <div class="grid grid-cols-3 gap-1 text-[10px] text-parchment/70">
+                                        <div>2nd: Zon DAP</div>
+                                        <div>3rd: Zon Sedaya</div>
+                                        <div>4th: Zon SFX</div>
+                                    </div>
+                                </div>
+                                <!-- 2026? -->
+                                <div class="bg-cowboy-red/30 p-2.5 rounded border border-cowboy-gold/30 text-center">
+                                    <span class="font-western text-cowboy-gold text-sm animate-pulse block">SIAPAKAH JOHAN 2026?</span>
+                                    <p class="text-[9px] text-parchment/80 mt-1">Adakah Zon Kanowit berjaya mempertahankan kejuaraan di tahun 2026</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Zon Details Accordion/Lists (Right 7 cols) -->
+                    <div class="lg:col-span-7 space-y-4">
+                        <div class="border-b-2 border-cowboy-brown pb-2">
+                            <h2 class="font-western text-2xl text-cowboy-dark flex items-center gap-2">
+                                <i class="fa-solid fa-map-location-dot text-cowboy-red"></i> 4 ZON 
+                            </h2>
+                        </div>
+
+                        <!-- Search/Filter School Bar -->
+                        <div class="relative">
+                            <i class="fa-solid fa-magnifying-glass absolute left-3 top-3 text-stone-500"></i>
+                            <input type="text" id="schoolSearch" onkeyup="filterSchools()" placeholder="Cari nama sekolah (e.g., Ulu Machan, Sedaya)..." class="w-full bg-white border border-cowboy-brown/30 rounded-lg py-2.5 pl-10 pr-4 text-xs shadow-inner focus:outline-none focus:ring-1 focus:ring-cowboy-gold">
+                        </div>
+
+                        <!-- 4 Zones Layout Grid -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <!-- ZON KANOWIT -->
+                            <div class="bg-parchment-dark/60 p-4 rounded-lg border border-cowboy-brown/30 space-y-2 school-zone-card" data-zone="Zon Kanowit">
+                                <div class="flex items-center justify-between border-b border-stone-400/50 pb-1.5">
+                                    <span class="font-western text-xs text-cowboy-red uppercase flex items-center gap-1">
+                                        <i class="fa-solid fa-star"></i> ZON KANOWIT (2026/2030)
+                                    </span>
+                                    <span class="bg-cowboy-red text-white text-[9px] px-1.5 py-0.5 rounded uppercase font-bold">PENGELOLA 2026</span>
+                                </div>
+                                <ul class="text-[11px] text-stone-800 space-y-1.5 pl-1">
+                                    <li class="font-bold school-item flex items-center gap-1.5"><i class="fa-solid fa-user-tie text-[10px] text-cowboy-brown"></i> SK Ulu Machan (K)</li>
+                                    <li class="school-item flex items-center gap-1.5"><i class="fa-solid fa-school text-[10px] text-stone-500"></i> PPD Kanowit</li>
+                                    <li class="school-item flex items-center gap-1.5"><i class="fa-solid fa-school text-[10px] text-stone-500"></i> SMK Kanowit</li>
+                                    <li class="school-item flex items-center gap-1.5"><i class="fa-solid fa-school text-[10px] text-stone-500"></i> SK Ng Machan</li>
+                                    <li class="school-item flex items-center gap-1.5"><i class="fa-solid fa-school text-[10px] text-stone-500"></i> SK Ng Jagoi</li>
+                                    <li class="school-item flex items-center gap-1.5"><i class="fa-solid fa-school text-[10px] text-stone-500"></i> SJKC Cheng Hua</li>
+                                </ul>
+                            </div>
+
+                            <!-- ZON DAP -->
+                            <div class="bg-parchment-dark/60 p-4 rounded-lg border border-cowboy-brown/30 space-y-2 school-zone-card" data-zone="Zon DAP">
+                                <div class="flex items-center justify-between border-b border-stone-400/50 pb-1.5">
+                                    <span class="font-western text-xs text-cowboy-blue uppercase flex items-center gap-1">
+                                        <i class="fa-solid fa-star"></i> ZON DAP (2027/2031)
+                                    </span>
+                                </div>
+                                <ul class="text-[11px] text-stone-800 space-y-1.5 pl-1">
+                                    <li class="font-bold school-item flex items-center gap-1.5"><i class="fa-solid fa-user-tie text-[10px] text-cowboy-brown"></i> SK Ng Jagau (K)</li>
+                                    <li class="school-item flex items-center gap-1.5"><i class="fa-solid fa-school text-[10px] text-stone-500"></i> SMK Ng Dap</li>
+                                    <li class="school-item flex items-center gap-1.5"><i class="fa-solid fa-school text-[10px] text-stone-500"></i> SK Ng Ngungun</li>
+                                    <li class="school-item flex items-center gap-1.5"><i class="fa-solid fa-school text-[10px] text-stone-500"></i> SK Ng Dap</li>
+                                    <li class="school-item flex items-center gap-1.5"><i class="fa-solid fa-school text-[10px] text-stone-500"></i> SK Ng Nirok</li>
+                                    <li class="school-item flex items-center gap-1.5"><i class="fa-solid fa-school text-[10px] text-stone-500"></i> SK Ng Poi</li>
+                                    <li class="school-item flex items-center gap-1.5"><i class="fa-solid fa-school text-[10px] text-stone-500"></i> SK Ng Ngemah</li>
+                                    <li class="school-item flex items-center gap-1.5"><i class="fa-solid fa-school text-[10px] text-stone-500"></i> SK Ng Menalun</li>
+                                    <li class="school-item flex items-center gap-1.5"><i class="fa-solid fa-school text-[10px] text-stone-500"></i> SJKC Nam Hua</li>
+                                    <li class="school-item flex items-center gap-1.5"><i class="fa-solid fa-school text-[10px] text-stone-500"></i> SJKC Ming Wok</li>
+                                </ul>
+                            </div>
+
+                            <!-- ZON SEDAYA -->
+                            <div class="bg-parchment-dark/60 p-4 rounded-lg border border-cowboy-brown/30 space-y-2 school-zone-card" data-zone="Zon Sedaya">
+                                <div class="flex items-center justify-between border-b border-stone-400/50 pb-1.5">
+                                    <span class="font-western text-xs text-cowboy-green uppercase flex items-center gap-1">
+                                        <i class="fa-solid fa-star"></i> ZON SEDAYA (2025/2029)
+                                    </span>
+                                </div>
+                                <ul class="text-[11px] text-stone-800 space-y-1.5 pl-1">
+                                    <li class="font-bold school-item flex items-center gap-1.5"><i class="fa-solid fa-user-tie text-[10px] text-cowboy-brown"></i> SMK Sedaya (K)</li>
+                                    <li class="school-item flex items-center gap-1.5"><i class="fa-solid fa-school text-[10px] text-stone-500"></i> SK Sengayan</li>
+                                    <li class="school-item flex items-center gap-1.5"><i class="fa-solid fa-school text-[10px] text-stone-500"></i> SK Ng Tada</li>
+                                    <li class="school-item flex items-center gap-1.5"><i class="fa-solid fa-school text-[10px] text-stone-500"></i> SK Ulu Bawan</li>
+                                    <li class="school-item flex items-center gap-1.5"><i class="fa-solid fa-school text-[10px] text-stone-500"></i> SK Ng Balingiau</li>
+                                    <li class="school-item flex items-center gap-1.5"><i class="fa-solid fa-school text-[10px] text-stone-500"></i> SK Ng Jih</li>
+                                    <li class="school-item flex items-center gap-1.5"><i class="fa-solid fa-school text-[10px] text-stone-500"></i> SK Sg Tuah</li>
+                                    <li class="school-item flex items-center gap-1.5"><i class="fa-solid fa-school text-[10px] text-stone-500"></i> SK Rt. Dilang</li>
+                                    <li class="school-item flex items-center gap-1.5"><i class="fa-solid fa-school text-[10px] text-stone-500"></i> SJKC Liang Hua</li>
+                                    <li class="school-item flex items-center gap-1.5"><i class="fa-solid fa-school text-[10px] text-stone-500"></i> SJKC Shing Kok</li>
+                                    <li class="school-item flex items-center gap-1.5"><i class="fa-solid fa-school text-[10px] text-stone-500"></i> SJKC Shing Sing</li>
+                                </ul>
+                            </div>
+
+                            <!-- ZON SFX -->
+                            <div class="bg-parchment-dark/60 p-4 rounded-lg border border-cowboy-brown/30 space-y-2 school-zone-card" data-zone="Zon SFX">
+                                <div class="flex items-center justify-between border-b border-stone-400/50 pb-1.5">
+                                    <span class="font-western text-xs text-stone-700 uppercase flex items-center gap-1">
+                                        <i class="fa-solid fa-star"></i> ZON SFX (2024/2028)
+                                    </span>
+                                </div>
+                                <ul class="text-[11px] text-stone-800 space-y-1.5 pl-1">
+                                    <li class="font-bold school-item flex items-center gap-1.5"><i class="fa-solid fa-user-tie text-[10px] text-cowboy-brown"></i> SK Ulu Ranan (K)</li>
+                                    <li class="school-item flex items-center gap-1.5"><i class="fa-solid fa-school text-[10px] text-stone-500"></i> SK St. Francis</li>
+                                    <li class="school-item flex items-center gap-1.5"><i class="fa-solid fa-school text-[10px] text-stone-500"></i> SK Rt Kemiding</li>
+                                    <li class="school-item flex items-center gap-1.5"><i class="fa-solid fa-school text-[10px] text-stone-500"></i> SK Bt Luking</li>
+                                    <li class="school-item flex items-center gap-1.5"><i class="fa-solid fa-school text-[10px] text-stone-500"></i> SK Ulu Poi</li>
+                                    <li class="school-item flex items-center gap-1.5"><i class="fa-solid fa-school text-[10px] text-stone-500"></i> SK Ng Lipus</li>
+                                    <li class="school-item flex items-center gap-1.5"><i class="fa-solid fa-school text-[10px] text-stone-500"></i> SK Ulu Majau</li>
+                                    <li class="school-item flex items-center gap-1.5"><i class="fa-solid fa-school text-[10px] text-stone-500"></i> SJKC Yee Ting</li>
+                                    <li class="school-item flex items-center gap-1.5"><i class="fa-solid fa-school text-[10px] text-stone-500"></i> SJKC Yok Ming</li>
+                                    <li class="school-item flex items-center gap-1.5"><i class="fa-solid fa-school text-[10px] text-stone-500"></i> SJKC Chih Mong</li>
+                                    <li class="school-item flex items-center gap-1.5"><i class="fa-solid fa-school text-[10px] text-stone-500"></i> SJKC Shing Hua</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 4: SUKAN & GARIS MASA -->
+            <div id="tab-sukan" class="tab-content hidden">
+                <div class="space-y-6">
+                    <div class="border-b-2 border-cowboy-brown pb-2 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                        <h2 class="font-western text-3xl text-cowboy-dark flex items-center gap-2">
+                            <i class="fa-solid fa-chess-knight text-cowboy-red"></i> ACARA & GARIS MASA PERTANDINGAN
+                        </h2>
+                        <span class="bg-cowboy-red text-white text-xs font-western tracking-wider py-1 px-3 rounded shadow-md border border-cowboy-gold/50">
+                            12 JUN - 4 JULAI 2026
+                        </span>
+                    </div>
+
+                    <!-- Sports Category Grid -->
+                    <div class="bg-parchment-dark/50 p-4 rounded-lg border border-cowboy-brown/30">
+                        <h3 class="font-western text-sm text-cowboy-brown mb-3 tracking-widest uppercase">
+                            15 Acara Utama Dipertandingkan
+                        </h3>
+                        <div class="grid grid-cols-2 sm:grid-cols-5 gap-3">
+                            <div class="bg-white p-3 rounded shadow-sm border border-stone-200 flex flex-col items-center text-center">
+                                <i class="fa-solid fa-futbol text-2xl text-cowboy-blue mb-1"></i>
+                                <span class="font-western text-[10px] text-stone-800">BOLA SEPAK & FUTSAL</span>
+                            </div>
+                            <div class="bg-white p-3 rounded shadow-sm border border-stone-200 flex flex-col items-center text-center">
+                                <i class="fa-solid fa-basketball text-2xl text-cowboy-red mb-1"></i>
+                                <span class="font-western text-[10px] text-stone-800">BOLA JARING / BALING</span>
+                            </div>
+                            <div class="bg-white p-3 rounded shadow-sm border border-stone-200 flex flex-col items-center text-center">
+                                <i class="fa-solid fa-table-tennis-paddle-ball text-2xl text-cowboy-brown mb-1"></i>
+                                <span class="font-western text-[10px] text-stone-800">PING PONG & BADMINTON</span>
+                            </div>
+                            <div class="bg-white p-3 rounded shadow-sm border border-stone-200 flex flex-col items-center text-center">
+                                <i class="fa-solid fa-feather-pointed text-2xl text-stone-700 mb-1"></i>
+                                <span class="font-western text-[10px] text-stone-800">SCRABBLE</span>
+                            </div>
+                            <div class="bg-white p-3 rounded shadow-sm border border-stone-200 flex flex-col items-center text-center">
+                                <i class="fa-solid fa-bowl-food text-2xl text-green-700 mb-1"></i>
+                                <span class="font-western text-[10px] text-stone-800">MEMASAK (WESTERN)</span>
+                            </div>
+                            <div class="bg-white p-3 rounded shadow-sm border border-stone-200 flex flex-col items-center text-center">
+                                <i class="fa-solid fa-music text-2xl text-cowboy-red mb-1"></i>
+                                <span class="font-western text-[10px] text-stone-800">KARAOKE WESTERN</span>
+                            </div>
+                            <div class="bg-white p-3 rounded shadow-sm border border-stone-200 flex flex-col items-center text-center">
+                                <i class="fa-solid fa-masks-theater text-2xl text-purple-700 mb-1"></i>
+                                <span class="font-western text-[10px] text-stone-800">TARIAN KEBUDAYAAN</span>
+                            </div>
+                            <div class="bg-white p-3 rounded shadow-sm border border-stone-200 flex flex-col items-center text-center">
+                                <i class="fa-solid fa-fish text-2xl text-blue-500 mb-1"></i>
+                                <span class="font-western text-[10px] text-stone-800">MEMANCING IKAN & UDANG</span>
+                            </div>
+                            <div class="bg-white p-3 rounded shadow-sm border border-stone-200 flex flex-col items-center text-center">
+                                <i class="fa-solid fa-bullseye text-2xl text-cowboy-gold mb-1"></i>
+                                <span class="font-western text-[10px] text-stone-800">MENYUMPIT</span>
+                            </div>
+                            <div class="bg-white p-3 rounded shadow-sm border border-stone-200 flex flex-col items-center text-center">
+                                <i class="fa-solid fa-circle text-2xl text-stone-600 mb-1"></i>
+                                <span class="font-western text-[10px] text-stone-800">PETANQUE (VVIP)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Interactive Timeline Flow -->
+                    <div class="relative pl-8 border-l-2 border-cowboy-brown/30 space-y-6 my-4">
+                        <!-- Day 1 -->
+                        <div class="relative">
+                            <span class="absolute -left-12 top-0 bg-cowboy-brown text-white font-western text-xs w-8 h-8 rounded-full flex items-center justify-center border-2 border-cowboy-gold shadow">1</span>
+                            <div class="bg-white p-4 rounded-lg shadow-sm border border-stone-200">
+                                <h4 class="font-western text-sm text-cowboy-red">HARI PERTAMA: 12 JUN</h4>
+                                <ul class="text-xs text-stone-700 mt-2 space-y-1 list-disc pl-4">
+                                    <li><strong>Sukan Fizikal:</strong> Bola Sepak & Bola Jaring</li>
+                                    <li><strong>Sukan Minda & Seni:</strong> Memasak (Menu Western), Scrabble</li>
+                                    <li><strong>Hiburan:</strong> Saringan Karaoke</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Day 2 -->
+                        <div class="relative">
+                            <span class="absolute -left-12 top-0 bg-cowboy-brown text-white font-western text-xs w-8 h-8 rounded-full flex items-center justify-center border-2 border-cowboy-gold shadow">2</span>
+                            <div class="bg-white p-4 rounded-lg shadow-sm border border-stone-200">
+                                <h4 class="font-western text-sm text-cowboy-red">HARI KEDUA: 13 JUN</h4>
+                                <ul class="text-xs text-stone-700 mt-2 space-y-1 list-disc pl-4">
+                                    <li><strong>Sukan Fizikal:</strong> Badminton (Wanita), Bola Baling, Sepak Takraw</li>
+                                    <li><strong>Riadah Alam:</strong> Pertandingan Memancing Ikan & Udang</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Day 3 -->
+                        <div class="relative">
+                            <span class="absolute -left-12 top-0 bg-cowboy-brown text-white font-western text-xs w-8 h-8 rounded-full flex items-center justify-center border-2 border-cowboy-gold shadow">3</span>
+                            <div class="bg-white p-4 rounded-lg shadow-sm border border-stone-200">
+                                <h4 class="font-western text-sm text-cowboy-red">HARI KETIGA: 20 JUN</h4>
+                                <ul class="text-xs text-stone-700 mt-2 space-y-1 list-disc pl-4">
+                                    <li><strong>Sukan Gelanggang:</strong> Badminton (Lelaki), Ping Pong</li>
+                                    <li><strong>Sukan Tradisional:</strong> Menyumpit</li>
+                                    <li><strong>Acara Khas:</strong> Petanque (VVIP)</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Day 4 -->
+                        <div class="relative">
+                            <span class="absolute -left-12 top-0 bg-cowboy-brown text-white font-western text-xs w-8 h-8 rounded-full flex items-center justify-center border-2 border-cowboy-gold shadow">4</span>
+                            <div class="bg-white p-4 rounded-lg shadow-sm border border-stone-200">
+                                <h4 class="font-western text-sm text-cowboy-red">HARI KEEMPAT: 21 JUN</h4>
+                                <ul class="text-xs text-stone-700 mt-2 space-y-1 list-disc pl-4">
+                                    <li><strong>Sukan Gelanggang:</strong> Bola Tampar & Futsal</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Day 5 -->
+                        <div class="relative">
+                            <span class="absolute -left-12 top-0 bg-cowboy-red text-white font-western text-xs w-8 h-8 rounded-full flex items-center justify-center border-2 border-cowboy-gold shadow animate-bounce">5</span>
+                            <div class="bg-cowboy-brown text-parchment p-4 rounded-lg shadow-md border-2 border-cowboy-gold">
+                                <h4 class="font-western text-sm text-cowboy-gold uppercase tracking-widest flex items-center gap-2">
+                                    <i class="fa-solid fa-wand-magic-sparkles"></i> KEMUNCAK ACARA: 3 - 4 JULAI
+                                </h4>
+                                <ul class="text-xs text-parchment/90 mt-2 space-y-1 list-disc pl-4">
+                                    <li><strong>Aktiviti:</strong> Majlis Penutupan Resmi & Jamuan Merarau PSKPP 2026 di Dewan Hornbill</li>
+                                    <li><strong>Seni & Persembahan:</strong> Pertandingan Akhir Tarian Kebudayaan & Akhir Pertandingan Karaoke</li>
+                                    <li><strong>Khas:</strong> Penyerahan Bendera Pengelola kepada Zon DAP (Penganjur 2027)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 5: ATUR CARA -->
+            <div id="tab-aturcara" class="tab-content hidden">
+                <div class="space-y-6">
+                    <div class="border-b-2 border-cowboy-brown pb-2">
+                        <h2 class="font-western text-3xl text-cowboy-dark flex items-center gap-2">
+                            <i class="fa-solid fa-clipboard-list text-cowboy-red"></i> ATUR CARA MAJLIS PENUTUPAN & MERARAU
+                        </h2>
+                        <p class="text-xs text-stone-600 font-serif italic">Tarikh: 4 Julai 2026 (Sabtu) | Tempat: Dewan Hornbill, UTS Sibu</p>
+                    </div>
+
+                    <!-- Beautiful Itinerary Timeline Grid -->
+                    <div class="space-y-3">
+                        <!-- 09:00 AM -->
+                        <div class="flex flex-col md:flex-row gap-4 bg-white p-3 rounded shadow-sm border border-stone-200">
+                            <div class="md:w-32 flex items-center font-western text-cowboy-red text-sm tracking-widest border-b md:border-b-0 md:border-r border-stone-300 pb-1 md:pb-0">
+                                09:00 AM
+                            </div>
+                            <div class="flex-grow text-xs text-stone-800 flex items-center justify-between">
+                                <div>
+                                    <strong class="text-stone-950 font-bold">Ketibaan Para Peserta & Tetamu Jemputan</strong>
+                                    <p class="text-stone-600 mt-0.5">Pendaftaran, sesi penempatan meja, dan persiapan awal di Dewan Hornbill.</p>
+                                </div>
+                                <span class="bg-stone-100 text-stone-600 text-[9px] py-1 px-2 rounded-full font-bold uppercase">Persediaan</span>
+                            </div>
+                        </div>
+
+                        <!-- 09:30 AM -->
+                        <div class="flex flex-col md:flex-row gap-4 bg-white p-3 rounded shadow-sm border border-stone-200">
+                            <div class="md:w-32 flex items-center font-western text-cowboy-red text-sm tracking-widest border-b md:border-b-0 md:border-r border-stone-300 pb-1 md:pb-0">
+                                09:30 AM
+                            </div>
+                            <div class="flex-grow text-xs text-stone-800 flex items-center justify-between">
+                                <div>
+                                    <strong class="text-cowboy-dark font-bold text-sm">Ketibaan VIP Kehormat</strong>
+                                    <p class="text-stone-600 mt-0.5">Y.B. Tuan Allan Siden Gramong (ADUN N50 Machan)</p>
+                                </div>
+                                <span class="bg-yellow-100 text-yellow-800 text-[9px] py-1 px-2 rounded-full font-bold uppercase">Protokol</span>
+                            </div>
+                        </div>
+
+                        <!-- 10:00 AM -->
+                        <div class="flex flex-col md:flex-row gap-4 bg-white p-4 rounded shadow-md border-l-4 border-cowboy-gold">
+                            <div class="md:w-32 flex flex-col justify-center font-western text-cowboy-red text-sm tracking-widest border-b md:border-b-0 md:border-r border-stone-400 pb-1 md:pb-0">
+                                <span>10:00 AM</span>
+                                <span class="text-[9px] font-sans text-stone-500 font-bold uppercase tracking-normal">Bermula</span>
+                            </div>
+                            <div class="flex-grow text-xs text-stone-800 space-y-2">
+                                <strong class="text-stone-950 font-bold text-sm uppercase font-western tracking-wider text-cowboy-brown">Acara Rasmi Bermula</strong>
+                                <ul class="list-disc pl-4 space-y-1 text-stone-700">
+                                    <li>Nyanyian Lagu Kebangsaan <strong>'Negaraku'</strong> & Lagu Negeri Sarawak <strong>'Ibu Pertiwiku'</strong></li>
+                                    <li>Bacaan Doa oleh Ustaz Mohammad Hazwan</li>
+                                    <li>Ucapan Aluan Pengerusi PSKPP Kanowit 2026</li>
+                                    <li>Ucapan Perasmian & Penutupan oleh YB Tuan Allan Siden Gramong</li>
+                                    <li>Gimik Simbolik Perasmian Penutupan</li>
+                                    <li>Tayangan Selayang Pandang</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- 12:00 PM (Selingan / Persembahan) -->
+                        <div class="flex flex-col md:flex-row gap-4 bg-white p-3 rounded shadow-sm border border-stone-200">
+                            <div class="md:w-32 flex items-center font-western text-cowboy-red text-sm tracking-widest border-b md:border-b-0 md:border-r border-stone-300 pb-1 md:pb-0">
+                                
+                            </div>
+                            <div class="flex-grow text-xs text-stone-800 space-y-2">
+                                <strong class="text-stone-950 font-bold">Acara Kebudayaan & Pentas Selingan</strong>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-2 mt-1">
+                                    <div class="bg-parchment p-2 rounded border border-cowboy-gold/40">
+                                        <h5 class="font-western text-[10px] text-cowboy-red">PERTANDINGAN TARIAN</h5>
+                                        <p class="text-[10px] text-stone-600 mt-0.5">Selingan 1: Persembahan tarian kebudayaan penuh tradisi.</p>
+                                    </div>
+                                    <div class="bg-parchment p-2 rounded border border-cowboy-gold/40">
+                                        <h5 class="font-western text-[10px] text-cowboy-red">AKHIR KARAOKE</h5>
+                                        <p class="text-[10px] text-stone-600 mt-0.5">Selingan 2: Vokal mantap barisan guru-guru.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 01:30 PM (Penganugerahan) -->
+                        <div class="flex flex-col md:flex-row gap-4 bg-white p-3 rounded shadow-sm border border-stone-200">
+                            <div class="md:w-32 flex items-center font-western text-cowboy-red text-sm tracking-widest border-b md:border-b-0 md:border-r border-stone-300 pb-1 md:pb-0">
+                                
+                            </div>
+                            <div class="flex-grow text-xs text-stone-800 space-y-1">
+                                <strong class="text-stone-950 font-bold">Acara Kemuncak & Penganugerahan</strong>
+                                <ul class="list-disc pl-4 space-y-1 text-stone-700 text-[11px]">
+                                    <li>Penyampaian Hadiah Juara Cabaran Penurunan Berat Badan (Weight Loss Challenge)</li>
+                                    <li>Penyampaian Hadiah Pertandingan Karaoke & Tarian</li>
+                                    <li>Pengumuman Pemenang Keseluruhan Karnival PSKPP 2026</li>
+                                    <li><span class="text-cowboy-red font-bold">THE COUNTRY GLAM AWARD</span> (Anugerah Khas Pakaian Tema Western Terbaik)</li>
+                                    <li>Penyampaian Cenderamata Kenang-kenangan kepada Perasmi Utama</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- 03:00 PM (Penutupan & Sesi Gambar) -->
+                        <div class="flex flex-col md:flex-row gap-4 bg-white p-3 rounded shadow-sm border border-stone-200">
+                            <div class="md:w-32 flex items-center font-western text-cowboy-red text-sm tracking-widest border-b md:border-b-0 md:border-r border-stone-300 pb-1 md:pb-0">
+                               
+                            </div>
+                            <div class="flex-grow text-xs text-stone-800">
+                                <strong class="text-stone-950 font-bold block">Penutupan Majlis & Simbolik Bendera</strong>
+                                <p class="text-stone-600 mt-0.5">Sesi Penyerahan Bendera Pengelola . Nyanyian Lagu: <strong class="text-cowboy-brown">"Fly Kenyalang Fly"</strong> diikuti sesi fotografi kenang-kenangan bersama semua AJK pelaksana.</p>
+                            </div>
+                        </div>
+
+                        <!-- 04:00 PM -->
+                        <div class="flex flex-col md:flex-row gap-4 bg-stone-100 p-3 rounded shadow-sm border border-stone-200 text-stone-600">
+                            <div class="md:w-32 flex items-center font-western text-sm tracking-widest border-b md:border-b-0 md:border-r border-stone-300 pb-1 md:pb-0">
+                                04:00 PM
+                            </div>
+                            <div class="flex-grow text-xs flex items-center justify-between">
+                                <span>Majlis Bersurai </span>
+                                <span class="bg-stone-200 text-stone-700 text-[9px] py-1 px-2 rounded-full font-bold uppercase">Selesai</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 6: KEDUDUKAN MEJA -->
+            <div id="tab-meja" class="tab-content hidden">
+                <img src="set_ar.png">
+            </div>
+
+            <!-- TAB 7: JAWATANKUASA -->
+            <!-- TAB 7: JAWATANKUASA (AJK) -->
+            <div id="tab-ajk" class="tab-content hidden">
+                <div class="space-y-6">
+                    <div class="border-b-2 border-cowboy-brown pb-2 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                        <h2 class="font-western text-3xl text-cowboy-dark flex items-center gap-2">
+                            <i class="fa-solid fa-users-gear text-cowboy-red"></i> JAWATANKUASA INDUK & PELAKSANA
+                        </h2>
+                        
+                        <!-- Search AJK Name -->
+                        <div class="relative w-full md:w-80">
+                            <i class="fa-solid fa-magnifying-glass absolute left-3 top-2.5 text-stone-500"></i>
+                            <input type="text" id="ajkSearch" onkeyup="searchAJK()" placeholder="Cari nama AJK (e.g., George, Lu Cheng)..." class="w-full bg-white border border-cowboy-brown/30 rounded-lg py-2 pl-9 pr-4 text-xs shadow-inner focus:outline-none focus:ring-1 focus:ring-cowboy-gold">
+                        </div>
+                    </div>
+
+                    <!-- Category Tabs (Induk, Protokol, Teknikal) -->
+                    <div class="flex flex-wrap gap-2 border-b border-stone-300 pb-2">
+                        <button onclick="filterAJKTab('induk')" id="ajk-btn-induk" class="ajk-tab-btn text-xs font-western px-3 py-1.5 rounded-md bg-cowboy-brown text-white">Jawatankuasa Induk</button>
+<button onclick="filterAJKTab('protokol')" id="ajk-btn-protokol" class="ajk-tab-btn text-xs font-western px-3 py-1.5 rounded-md text-cowboy-brown hover:bg-parchment-dark">Protokol & Acara</button>
+<button onclick="filterAJKTab('teknikal')" id="ajk-btn-teknikal" class="ajk-tab-btn text-xs font-western px-3 py-1.5 rounded-md text-cowboy-brown hover:bg-parchment-dark">Teknikal & Kreatif</button>
+                    </div>
+
+                    <!-- Induk Category Panel -->
+                    <div id="ajk-panel-induk" class="ajk-panel space-y-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                            <!-- Penasihat -->
+                            <div class="bg-white p-3.5 rounded border border-stone-200 shadow-sm ajk-card">
+                                <span class="text-[10px] font-western text-cowboy-red tracking-wider uppercase">Penasihat</span>
+                                <strong class="block text-sm text-stone-900 mt-1 ajk-name">En. Dali Anak Rain</strong>
+                                <span class="text-xs text-stone-600 block">PPD Kanowit</span>
+                            </div>
+                            <!-- Pengerusi -->
+                            <div class="bg-white p-3.5 rounded border border-stone-200 shadow-sm ajk-card">
+                                <span class="text-[10px] font-western text-cowboy-red tracking-wider uppercase">Pengerusi</span>
+                                <strong class="block text-sm text-stone-900 mt-1 ajk-name">En. Ambrose Anak Jarit</strong>
+                                <span class="text-xs text-stone-600 block">Pengetua Cemerlang</span>
+                            </div>
+                            <!-- Naib Pengerusi -->
+                            <div class="bg-white p-3.5 rounded border border-stone-200 shadow-sm ajk-card">
+                                <span class="text-[10px] font-western text-cowboy-red tracking-wider uppercase">Naib Pengerusi</span>
+                                <ul class="text-xs text-stone-800 space-y-1 mt-1 font-semibold">
+                                    <li class="ajk-name">En. Andrew Anak Atan</li>
+                                    <li class="ajk-name">En. Balintian Anak Norbet Jubit</li>
+                                    <li class="ajk-name">Pn. Tanut Anak Ambol</li>
+                                </ul>
+                            </div>
+                            <!-- Penyelaras -->
+                            <div class="bg-white p-3.5 rounded border border-stone-200 shadow-sm ajk-card">
+                                <span class="text-[10px] font-western text-stone-500 tracking-wider uppercase">Penyelaras</span>
+                                <strong class="block text-sm text-stone-900 mt-1 ajk-name">En. Jilan Anak Unoh</strong>
+                            </div>
+                            <!-- Pen. Penyelaras -->
+                            <div class="bg-white p-3.5 rounded border border-stone-200 shadow-sm ajk-card">
+                                <span class="text-[10px] font-western text-stone-500 tracking-wider uppercase">Pen. Penyelaras</span>
+                                <strong class="block text-sm text-stone-900 mt-1 ajk-name">En. Lasu Anak Luta</strong>
+                            </div>
+                            <!-- Setiausaha -->
+                            <div class="bg-white p-3.5 rounded border border-stone-200 shadow-sm ajk-card">
+                                <span class="text-[10px] font-western text-stone-500 tracking-wider uppercase">Setiausaha</span>
+                                <strong class="block text-sm text-stone-900 mt-1 ajk-name">Cik Lu Cheng Kuan</strong>
+                            </div>
+                            <!-- Pen. Setiausaha -->
+                            <div class="bg-white p-3.5 rounded border border-stone-200 shadow-sm ajk-card">
+                                <span class="text-[10px] font-western text-stone-500 tracking-wider uppercase">Pen. Setiausaha</span>
+                                <strong class="block text-sm text-stone-900 mt-1 ajk-name">En. Mathew Madau Anak Yok</strong>
+                            </div>
+                            <!-- Bendahari -->
+                            <div class="bg-white p-3.5 rounded border border-stone-200 shadow-sm ajk-card">
+                                <span class="text-[10px] font-western text-stone-500 tracking-wider uppercase">Bendahari</span>
+                                <strong class="block text-sm text-stone-900 mt-1 ajk-name">Pn. Doris Gamang</strong>
+                            </div>
+                            <!-- Pen. Bendahari -->
+                            <div class="bg-white p-3.5 rounded border border-stone-200 shadow-sm ajk-card">
+                                <span class="text-[10px] font-western text-stone-500 tracking-wider uppercase">Pen. Bendahari</span>
+                                <strong class="block text-sm text-stone-900 mt-1 ajk-name">Cik Jaburie Jimbu</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Protokol & Acara Category Panel -->
+                    <div id="ajk-panel-protokol" class="ajk-panel space-y-4 hidden">
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                            <!-- Stage Manager -->
+                            <div class="bg-white p-3.5 rounded border border-stone-200 shadow-sm ajk-card">
+                                <span class="text-[10px] font-western text-cowboy-red tracking-wider uppercase">Stage Manager</span>
+                                <ul class="text-xs text-stone-800 space-y-1 mt-1 font-semibold">
+                                    <li class="ajk-name">En. Alex Anak Belalang</li>
+                                    <li class="ajk-name">En. Clinton Anak Genta</li>
+                                </ul>
+                            </div>
+                            <!-- Floor Manager -->
+                            <div class="bg-white p-3.5 rounded border border-stone-200 shadow-sm ajk-card">
+                                <span class="text-[10px] font-western text-cowboy-red tracking-wider uppercase">Floor Manager</span>
+                                <ul class="text-xs text-stone-800 space-y-1 mt-1 font-semibold">
+                                    <li class="ajk-name">En. Nicholas Burung Anak Rentap (K)</li>
+                                    <li class="ajk-name">En. Duli Anak Ninti</li>
+                                </ul>
+                            </div>
+                            <!-- Urusetia -->
+                            <div class="bg-white p-3.5 rounded border border-stone-200 shadow-sm ajk-card">
+                                <span class="text-[10px] font-western text-cowboy-red tracking-wider uppercase">Urusetia</span>
+                                <ul class="text-xs text-stone-700 space-y-1 mt-1">
+                                    <li class="font-bold ajk-name">En. Mathew Madau Anak Yok (K)</li>
+                                    <li class="ajk-name">Cik Siung Siew Shong</li>
+                                    <li class="ajk-name">Cik Susy Anak Genta</li>
+                                    <li class="ajk-name">Cik Stephanie Gloria Bt Jugi</li>
+                                    <li class="ajk-name">Cik Nor Hidayah Bt Mohamad</li>
+                                    <li class="ajk-name">Pn. Sii Siew Eng</li>
+                                    <li class="ajk-name">Cik Sera Anak Pengiran</li>
+                                </ul>
+                            </div>
+                            <!-- Pengacara Majlis -->
+                            <div class="bg-white p-3.5 rounded border border-stone-200 shadow-sm ajk-card">
+                                <span class="text-[10px] font-western text-stone-500 tracking-wider uppercase">Pengacara Majlis</span>
+                                <ul class="text-xs text-stone-700 space-y-1 mt-1">
+                                    <li class="font-bold ajk-name">En. Nelson Anak Juni (K)</li>
+                                    <li class="ajk-name">Pn. Kattiny Binti Bantan</li>
+                                    <li class="ajk-name">Cik Melizana Anak Injun</li>
+                                </ul>
+                            </div>
+                            <!-- Buku Program / Protokol & Sambutan -->
+                            <div class="bg-white p-3.5 rounded border border-stone-200 shadow-sm ajk-card">
+                                <span class="text-[10px] font-western text-stone-500 tracking-wider uppercase">Buku Program / Sambutan</span>
+                                <ul class="text-xs text-stone-700 space-y-1 mt-1">
+                                    <li class="font-bold ajk-name">Cik Amylia Mit Anak Mawan (K)</li>
+                                    <li class="ajk-name">Cik Esther Ukop Anak Jaraw</li>
+                                    <li class="font-bold ajk-name">Pn. Aly Anak Kuntel (K)</li>
+                                    <li class="ajk-name">Pn. Grace Julan Chambers</li>
+                                    <li class="ajk-name">En. Lionion Ka Chong</li>
+                                </ul>
+                            </div>
+                            <!-- Doa / Ucapan / Laporan -->
+                            <div class="bg-white p-3.5 rounded border border-stone-200 shadow-sm ajk-card">
+                                <span class="text-[10px] font-western text-stone-500 tracking-wider uppercase">Doa, Teks & Laporan</span>
+                                <ul class="text-xs text-stone-700 space-y-1 mt-1">
+                                    <li class="ajk-name">Ustaz Mohammad Hazwan Bin Denny Asman (Doa)</li>
+                                    <li class="font-bold ajk-name">Pn. Victoria Jane (K - Laporan)</li>
+                                    <li class="ajk-name">Pn. Suzanne Suly Anak Itat</li>
+                                    <li class="font-bold ajk-name">Pn. Celia Galeh (K - Teks)</li>
+                                    <li class="ajk-name">Pn. Annie Lungie</li>
+                                </ul>
+                            </div>
+                            <!-- Sijil / Hadiah / Cenderahati -->
+                            <div class="bg-white p-3.5 rounded border border-stone-200 shadow-sm ajk-card">
+                                <span class="text-[10px] font-western text-stone-500 tracking-wider uppercase">Sijil, Hadiah & Cenderahati</span>
+                                <ul class="text-xs text-stone-700 space-y-1 mt-1">
+                                    <li class="font-bold ajk-name">Pn. Kong Poh Hua (K)</li>
+                                    <li class="ajk-name">Pn. Cyrene Anak Nyalong</li>
+                                    <li class="ajk-name">Cik Sharon Kong Li Li</li>
+                                </ul>
+                            </div>
+                            <!-- Menu Dan Dewan -->
+                            <div class="bg-white p-3.5 rounded border border-stone-200 shadow-sm ajk-card">
+                                <span class="text-[10px] font-western text-stone-500 tracking-wider uppercase">Menu & Dewan</span>
+                                <ul class="text-xs text-stone-700 space-y-1 mt-1">
+                                    <li class="ajk-name font-bold">Cik Mahsida Bt Daud</li>
+                                    <li class="ajk-name">Cik Hiza Binti Gafar</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Teknikal & Kreatif Category Panel -->
+                   <div id="ajk-panel-teknikal" class="ajk-panel space-y-4 hidden">
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                            <!-- Siaraya -->
+                            <div class="bg-white p-3.5 rounded border border-stone-200 shadow-sm ajk-card">
+                                <span class="text-[10px] font-western text-cowboy-red tracking-wider uppercase">Siaraya (PA System)</span>
+                                <ul class="text-xs text-stone-800 space-y-1 mt-1 font-semibold">
+                                    <li class="font-bold ajk-name">En. George Minggat (K)</li>
+                                    <li class="ajk-name">En. Raphael Mbok</li>
+                                </ul>
+                            </div>
+                            <!-- Kelengkapan Dan Peralatan -->
+                            <div class="bg-white p-3.5 rounded border border-stone-200 shadow-sm ajk-card">
+                                <span class="text-[10px] font-western text-cowboy-red tracking-wider uppercase">Kelengkapan / Susun Atur Meja</span>
+                                <ul class="text-xs text-stone-700 space-y-1 mt-1">
+                                    <li class="font-bold ajk-name">En. Mohd Syaqir (K)</li>
+                                    <li class="ajk-name">En. Mohd Azlan</li>
+                                    <li class="font-bold ajk-name">Shahuddin Bin Maslan (K)</li>
+                                    <li class="ajk-name">En. Athanasius Aka Anak Paul</li>
+                                    <li class="ajk-name">Andrew Kana Anak Ambrose Abong</li>
+                                </ul>
+                            </div>
+                            <!-- Jurufoto & Selayang Pandang -->
+                            <div class="bg-white p-3.5 rounded border border-stone-200 shadow-sm ajk-card">
+                                <span class="text-[10px] font-western text-cowboy-red tracking-wider uppercase">Jurufoto & Selayang Pandang</span>
+                                <ul class="text-xs text-stone-700 space-y-1 mt-1">
+                                    <li class="font-bold ajk-name">En. Mukit Nyua (K)</li>
+                                    <li class="ajk-name">En. Mohd Azhar Bin Zulkifli</li>
+                                    <li class="ajk-name">Puan Agnes Anak Aji</li>
+                                    <li class="ajk-name">Puan Molly Anak George</li>
+                                    <li class="font-bold ajk-name">Pn. Lu Cheng Kuan (K)</li>
+                                    <li class="ajk-name">En. Aziz Bin Suaidi</li>
+                                    <li class="ajk-name">Nursyakirah Binti Abdullah</li>
+                                    <li class="ajk-name">Pn. Jenny Mickey Surang</li>
+                                </ul>
+                            </div>
+                            <!-- Hakim Pertandingan Busana (Country Glam) -->
+                            <div class="bg-white p-3.5 rounded border border-stone-200 shadow-sm ajk-card">
+                                <span class="text-[10px] font-western text-stone-500 tracking-wider uppercase">Hakim Busana Glam</span>
+                                <ul class="text-xs text-stone-700 space-y-1 mt-1">
+                                    <li class="font-bold ajk-name">Pn. Josephine Juri Anak Kubu (K)</li>
+                                    <li class="ajk-name">Cik Neilly Anak Augustine Engga</li>
+                                </ul>
+                            </div>
+                            <!-- Backdrop / Hiasan Pentas / Photobooth -->
+                            <div class="bg-white p-3.5 rounded border border-stone-200 shadow-sm ajk-card">
+                                <span class="text-[10px] font-western text-stone-500 tracking-wider uppercase">Selingan / Backdrop / Hiasan / Pentas</span>
+                                <ul class="text-xs text-stone-700 space-y-1 mt-1">
+                                    <li class="font-bold ajk-name">Lenie Anak Lutin (K - Selingan)</li>
+                                    <li class="ajk-name">Pn. Juana Anak Utek</li>
+                                    <li class="ajk-name font-bold">En. Thomas Liong Sen Fui (K - Banner)</li>
+                                    <li class="ajk-name font-bold">Pn. Susana Anak Lanie (K - Hiasan)</li>
+                                    <li class="ajk-name">Pn. Nadia Anak Johnny</li>
+                                    <li class="ajk-name">Cik Lydia Anak Kandau</li>
+                                    <li class="ajk-name">Cik Alfera Anak Daniel</li>
+                                </ul>
+                            </div>
+                            <!-- Simbolik Perasmian & Kebersihan -->
+                            <div class="bg-white p-3.5 rounded border border-stone-200 shadow-sm ajk-card">
+                                <span class="text-[10px] font-western text-stone-500 tracking-wider uppercase">Gimik Simbolik & Kebersihan</span>
+                                <ul class="text-xs text-stone-700 space-y-1 mt-1">
+                                    <li class="font-bold ajk-name">En. Zultiqa Amirullah Bin Ibrahim (K - Gimik)</li>
+                                    <li class="ajk-name">Cik Aishah Binti Mohd Zain</li>
+                                    <li class="ajk-name">Pn. Niru Anak Kayu</li>
+                                    <li class="ajk-name">Cik Wenie Ak Joseph</li>
+                                    <li class="font-bold ajk-name">Pn. Phan Kee Ling (K - Kebersihan)</li>
+                                    <li class="ajk-name">Muhd Hafizulruddin Abu Bakar</li>
+                                    <li class="ajk-name">En. Polycarp Anak Anthony Karim</li>
+                                    <li class="ajk-name">Encik Kana Dana</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 8: PENGHARGAAN -->
+              <div id="tab-penghargaan" class="tab-content hidden">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- Appreciation Message -->
+                    <div class="space-y-6">
+                        <div class="border-b-2 border-cowboy-brown pb-2">
+                            <h2 class="font-western text-3xl text-cowboy-dark flex items-center gap-2">
+                                <i class="fa-solid fa-ribbon text-cowboy-red"></i> JUTAAN TERIMA KASIH
+                            </h2>
+                        </div>
+
+                        <!-- Parchment Appreciation Card -->
+                        <div class="bg-parchment-dark/60 p-6 rounded-lg border border-cowboy-brown/30 space-y-4 shadow-inner relative overflow-hidden">
+                            <div class="absolute -top-6 -left-6 text-cowboy-gold opacity-10"><i class="fa-solid fa-horse-head text-9xl"></i></div>
+                            
+                            <p class="text-sm font-serif italic text-stone-800 leading-relaxed relative z-10">
+                                Setinggi-tinggi penghargaan dan ucapan terima kasih yang tidak terhingga kepada:
+                            </p>
+
+                            <div class="space-y-3 relative z-10 text-xs">
+                                <div class="flex items-start gap-2 bg-white/70 p-2.5 rounded border border-cowboy-gold/30">
+                                    <i class="fa-solid fa-star text-cowboy-gold mt-0.5"></i>
+                                    <div>
+                                        <strong>Y.B. Tuan Allan Siden Gramong</strong>
+                                        <p class="text-[11px] text-stone-600">ADUN N50 Machan, atas kesudian merasmikan Karnival PSKPP Peringkat Daerah Kanowit 2026.</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start gap-2 bg-white/70 p-2.5 rounded border border-cowboy-gold/30">
+                                    <i class="fa-solid fa-circle-check text-cowboy-red mt-0.5"></i>
+                                    <div>
+                                        <strong>Pejabat Pendidikan Daerah Kanowit & AJK Induk</strong>
+                                        <p class="text-[11px] text-stone-600">Sokongan, bimbingan dan pimpinan jitu sepanjang persediaan penganjuran.</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start gap-2 bg-white/70 p-2.5 rounded border border-cowboy-gold/30">
+                                    <i class="fa-solid fa-hands-holding-child text-cowboy-brown mt-0.5"></i>
+                                    <div>
+                                        <strong>Seluruh Jawatankuasa Pelaksana & Penaja</strong>
+                                        <p class="text-[11px] text-stone-600">Kerja keras dan pengorbanan masa, tenaga, serta dana bagi menjayakan acara.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <p class="text-xs text-stone-700 leading-relaxed italic pt-2">
+                                Semoga semangat kesukanan dan jalinan persaudaraan sentiasa berkekalan dan subur mekar di antara kita semua. Hingga bertemu lagi di kejohanan akan datang!
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Interactive Virtual Guestbook Board (Western Style) -->
+                    <div class="space-y-4">
+                        <div class="border-b-2 border-cowboy-brown pb-2">
+                            <h2 class="font-western text-2xl text-cowboy-dark flex items-center gap-2">
+                                <i class="fa-solid fa-file-signature text-cowboy-red"></i> PAPAN UCAPAN WARGA PSKPP KANOWIT
+                            </h2>
+                            <p class="text-xs text-stone-600 font-serif italic">Tinggalkan ucapan / coretan kata semangat anda di sini!</p>
+                        </div>
+
+                        <!-- Form -->
+                        <div class="bg-white p-4 rounded-lg border border-stone-200 shadow-sm space-y-3">
+                            <div class="grid grid-cols-2 gap-2">
+                                <input type="text" id="signerName" placeholder="Nama Anda (e.g., Cikgu Ahmad)..." class="text-xs w-full bg-stone-50 border border-stone-300 rounded p-2 focus:outline-none focus:ring-1 focus:ring-cowboy-gold">
+                                <input type="text" id="signerSchool" placeholder="Zon / Sekolah (e.g., SMK Kanowit)..." class="text-xs w-full bg-stone-50 border border-stone-300 rounded p-2 focus:outline-none focus:ring-1 focus:ring-cowboy-gold">
+                            </div>
+                            <textarea id="signerMessage" rows="2" placeholder="Tuliskan ucapan anda disini (e.g., Terbaik Kanowit!)..." class="text-xs w-full bg-stone-50 border border-stone-300 rounded p-2 focus:outline-none focus:ring-1 focus:ring-cowboy-gold"></textarea>
+                            <button onclick="addGuestMessage()" class="w-full bg-cowboy-red hover:bg-cowboy-brown text-white font-western text-xs py-2 rounded transition-colors shadow">
+                                <i class="fa-solid fa-feather mr-1"></i> Kongsi Ucapan
+                            </button>
+                        </div>
+
+                        <!-- Messages Board container -->
+                        <div class="max-h-60 overflow-y-auto space-y-2.5 pr-1.5" id="guestbookMessages">
+                            <!-- Pre-filled default beautiful western guest notes -->
+                            <div class="bg-parchment-dark/40 p-3 rounded border-l-4 border-cowboy-gold text-xs">
+                                <p class="italic text-stone-800">"Semangat yang luar biasa daripada penganjur Zon Kanowit!"</p>
+                                <span class="block text-right text-[10px] text-stone-600 font-bold mt-1">— Cikgu x (Zon Sedaya)</span>
+                            </div>
+                            <div class="bg-parchment-dark/40 p-3 rounded border-l-4 border-cowboy-red text-xs">
+                                <p class="italic text-stone-800">"Sukan menyatukan kita semua warga pendidik Kanowit. Terbaik semua"</p>
+                                <span class="block text-right text-[10px] text-stone-600 font-bold mt-1">— Mr. Y  (PPD Kanowit)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full bg-cowboy-dark border-t-4 border-cowboy-gold py-3 px-6 text-center">
+        <p class="text-xs text-parchment font-serif">© develop by AM - 2026 PSKPP Kanowit | Kementerian Pendidikan Malaysia</p>
+    </footer>
+
+    <script>
+        // Tab switching functionality
+        function switchTab(tabName) {
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.classList.add('hidden'));
+            document.getElementById('tab-' + tabName).classList.remove('hidden');
+            
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-cowboy-gold', 'text-cowboy-dark');
+                btn.classList.add('text-parchment-dark', 'border-cowboy-brown');
+            });
+            document.getElementById('btn-' + tabName).classList.add('bg-cowboy-gold', 'text-cowboy-dark');
+        }
+
+        // Countdown timer
+        function updateCountdown() {
+            const eventDate = new Date('2026-07-04T10:00:00').getTime();
+            const now = new Date().getTime();
+            const distance = eventDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = String(days).padStart(2, '0');
+            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+        }
+
+        // Placeholder functions for search functionality
+        function filterSchools() {
+            // Search implementation
+        }
+
+        function searchTableAllocation() {
+            // Table search implementation
+        }
+
+        function searchAJK() {
+            // AJK search implementation
+        }
+
+        function filterAJKTab(tab) {
+  document.querySelectorAll('.ajk-panel').forEach(panel => {
+    panel.classList.add('hidden');
+  });
+
+  document.getElementById('ajk-panel-' + tab).classList.remove('hidden');
+
+  document.querySelectorAll('.ajk-tab-btn').forEach(btn => {
+    btn.classList.remove('bg-cowboy-brown', 'text-white');
+    btn.classList.add('text-cowboy-brown');
+  });
+
+  document.getElementById('ajk-btn-' + tab).classList.remove('text-cowboy-brown');
+  document.getElementById('ajk-btn-' + tab).classList.add('bg-cowboy-brown', 'text-white');
+}
+
+        // Initialize
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
+        function addGuestMessage() {
+  const name = document.getElementById('signerName').value.trim();
+  const school = document.getElementById('signerSchool').value.trim();
+  const message = document.getElementById('signerMessage').value.trim();
+  const board = document.getElementById('guestbookMessages');
+
+  if (name === '' || school === '' || message === '') {
+    alert('Sila isi nama, sekolah/zon dan ucapan.');
+    return;
+  }
+
+  const newMessage = document.createElement('div');
+  newMessage.className = 'bg-parchment-dark/40 p-3 rounded border-l-4 border-cowboy-gold text-xs stamp-effect';
+
+  newMessage.innerHTML = `
+    <p class="italic text-stone-800">"${message}"</p>
+    <span class="block text-right text-[10px] text-stone-600 font-bold mt-1">
+      — ${name} (${school})
+    </span>
+  `;
+
+  board.prepend(newMessage);
+
+  document.getElementById('signerName').value = '';
+  document.getElementById('signerSchool').value = '';
+  document.getElementById('signerMessage').value = '';
+}
+    </script>
+</body>
+</html>
