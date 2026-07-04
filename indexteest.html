@@ -1251,7 +1251,7 @@
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
 
-  const guestbookRef = collection(db, "papan_ucapan");
+  const guestbookRef = collection(db, "messageboard");
 
   window.addGuestMessage = async function () {
     const name = document.getElementById("signerName").value.trim();
@@ -1314,7 +1314,7 @@
       board.appendChild(card);
     });
   });
-        collection(db, "messageboard")
+        
 </script>
 </body>
 </html>
