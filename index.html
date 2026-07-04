@@ -1195,6 +1195,34 @@
         // Initialize
         updateCountdown();
         setInterval(updateCountdown, 1000);
+
+        function addGuestMessage() {
+  const name = document.getElementById('signerName').value.trim();
+  const school = document.getElementById('signerSchool').value.trim();
+  const message = document.getElementById('signerMessage').value.trim();
+  const board = document.getElementById('guestbookMessages');
+
+  if (name === '' || school === '' || message === '') {
+    alert('Sila isi nama, sekolah/zon dan ucapan.');
+    return;
+  }
+
+  const newMessage = document.createElement('div');
+  newMessage.className = 'bg-parchment-dark/40 p-3 rounded border-l-4 border-cowboy-gold text-xs stamp-effect';
+
+  newMessage.innerHTML = `
+    <p class="italic text-stone-800">"${message}"</p>
+    <span class="block text-right text-[10px] text-stone-600 font-bold mt-1">
+      — ${name} (${school})
+    </span>
+  `;
+
+  board.prepend(newMessage);
+
+  document.getElementById('signerName').value = '';
+  document.getElementById('signerSchool').value = '';
+  document.getElementById('signerMessage').value = '';
+}
     </script>
 </body>
 </html>
