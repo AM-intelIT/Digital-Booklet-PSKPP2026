@@ -1224,5 +1224,96 @@
   document.getElementById('signerMessage').value = '';
 }
     </script>
+    <script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
+  import {
+    getFirestore,
+    collection,
+    addDoc,
+    query,
+    orderBy,
+    limit,
+    onSnapshot,
+    serverTimestamp
+  } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
+
+  // 1. Replace this with your Firebase config
+  const firebaseConfig = {
+   apiKey: "AIzaSyC5CNSTiySNnE4BTHbAFAshjyXDtEI8V9w",
+  authDomain: "digitalbooklet.firebaseapp.com",
+  projectId: "digitalbooklet",
+  storageBucket: "digitalbooklet.firebasestorage.app",
+  messagingSenderId: "482394396276",
+  appId: "1:482394396276:web:c762cf0a0b3a4175c82321",
+  measurementId: "G-83YK62Q874"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  const guestbookRef = collection(db, "papan_ucapan");
+
+  window.addGuestMessage = async function () {
+    const name = document.getElementById("signerName").value.trim();
+    const school = document.getElementById("signerSchool").value.trim();
+    const message = document.getElementById("signerMessage").value.trim();
+
+    if (!name || !school || !message) {
+      alert("Sila isi nama, sekolah/zon dan ucapan.");
+      return;
+    }
+
+    await addDoc(guestbookRef, {
+      name: name,
+      school: school,
+      message: message,
+      createdAt: serverTimestamp()
+    });
+
+    document.getElementById("signerName").value = "";
+    document.getElementById("signerSchool").value = "";
+    document.getElementById("signerMessage").value = "";
+  };
+
+  function escapeHTML(text) {
+    return String(text).replace(/[&<>"']/g, function (char) {
+      return {
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#039;"
+      }[char];
+    });
+  }
+
+  const q = query(
+    guestbookRef,
+    orderBy("createdAt", "desc"),
+    limit(100)
+  );
+
+  onSnapshot(q, function (snapshot) {
+    const board = document.getElementById("guestbookMessages");
+    board.innerHTML = "";
+
+    snapshot.forEach(function (doc) {
+      const data = doc.data();
+
+      const card = document.createElement("div");
+      card.className =
+        "bg-parchment-dark/40 p-3 rounded border-l-4 border-cowboy-gold text-xs stamp-effect";
+
+      card.innerHTML = `
+        <p class="italic text-stone-800">"${escapeHTML(data.message)}"</p>
+        <span class="block text-right text-[10px] text-stone-600 font-bold mt-1">
+          — ${escapeHTML(data.name)} (${escapeHTML(data.school)})
+        </span>
+      `;
+
+      board.appendChild(card);
+    });
+  });
+</script>
 </body>
 </html>
