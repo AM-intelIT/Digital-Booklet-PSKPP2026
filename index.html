@@ -814,13 +814,13 @@
 
                     <!-- Category Tabs (Induk, Protokol, Teknikal) -->
                     <div class="flex flex-wrap gap-2 border-b border-stone-300 pb-2">
-                        <button onclick="filterAJKTab('ajk-tab-induk')" id="ajk-tab-induk" class="ajk-tab-btn text-xs font-western px-3 py-1.5 rounded-md bg-cowboy-brown text-white">Jawatankuasa Induk</button>
-                        <button onclick="filterAJKTab('ajk-tab-protokol')" id="ajk-tab-protokol" class="ajk-tab-btn text-xs font-western px-3 py-1.5 rounded-md text-cowboy-brown hover:bg-parchment-dark">Protokol & Acara</button>
-                        <button onclick="filterAJKTab('ajk-tab-teknikal')" id="ajk-tab-teknikal" class="ajk-tab-btn text-xs font-western px-3 py-1.5 rounded-md text-cowboy-brown hover:bg-parchment-dark">Teknikal & Kreatif</button>
+                        <button onclick="filterAJKTab('induk')" id="ajk-btn-induk" class="ajk-tab-btn text-xs font-western px-3 py-1.5 rounded-md bg-cowboy-brown text-white">Jawatankuasa Induk</button>
+<button onclick="filterAJKTab('protokol')" id="ajk-btn-protokol" class="ajk-tab-btn text-xs font-western px-3 py-1.5 rounded-md text-cowboy-brown hover:bg-parchment-dark">Protokol & Acara</button>
+<button onclick="filterAJKTab('teknikal')" id="ajk-btn-teknikal" class="ajk-tab-btn text-xs font-western px-3 py-1.5 rounded-md text-cowboy-brown hover:bg-parchment-dark">Teknikal & Kreatif</button>
                     </div>
 
                     <!-- Induk Category Panel -->
-                    <div id="ajk-tab-induk" class="ajk-panel space-y-4">
+                    <div id="ajk-panel-induk" class="ajk-panel space-y-4">
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                             <!-- Penasihat -->
                             <div class="bg-white p-3.5 rounded border border-stone-200 shadow-sm ajk-card">
@@ -960,7 +960,7 @@
                     </div>
 
                     <!-- Teknikal & Kreatif Category Panel -->
-                    <div id="ajk-tab-teknikal" class="ajk-panel space-y-4 hidden">
+                   <div id="ajk-panel-teknikal" class="ajk-panel space-y-4 hidden">
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                             <!-- Siaraya -->
                             <div class="bg-white p-3.5 rounded border border-stone-200 shadow-sm ajk-card">
@@ -1177,8 +1177,20 @@
         }
 
         function filterAJKTab(tab) {
-            // Tab filter implementation
-        }
+  document.querySelectorAll('.ajk-panel').forEach(panel => {
+    panel.classList.add('hidden');
+  });
+
+  document.getElementById('ajk-panel-' + tab).classList.remove('hidden');
+
+  document.querySelectorAll('.ajk-tab-btn').forEach(btn => {
+    btn.classList.remove('bg-cowboy-brown', 'text-white');
+    btn.classList.add('text-cowboy-brown');
+  });
+
+  document.getElementById('ajk-btn-' + tab).classList.remove('text-cowboy-brown');
+  document.getElementById('ajk-btn-' + tab).classList.add('bg-cowboy-brown', 'text-white');
+}
 
         // Initialize
         updateCountdown();
